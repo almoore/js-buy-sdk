@@ -49,7 +49,6 @@ test('it should convert myShopifyDomain to domain', function (assert) {
 test('it should output a deprecation warning when using myShopifyDomain', function (assert) {
   assert.expect(3);
 
-  /* eslint-disable no-console */
   const oldLog = logger.warn;
   let output = [];
 
@@ -67,7 +66,6 @@ test('it should output a deprecation warning when using myShopifyDomain', functi
   assert.equal(output[0], 'Config - ', 'the deprecation warning should say it\'s from config');
   assert.notEqual(output[1].indexOf('deprecated'), -1, 'the deprecation warning should describe the problem');
   logger.warn = oldLog;
-  /* eslint-enable no-console */
 });
 
 test('it should set domain', function (assert) {
