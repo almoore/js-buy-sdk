@@ -6,7 +6,11 @@ function wrapConsole(logCommand) {
 
     args.unshift('[JS-BUY-SDK]: ');
     /* eslint-disable no-console */
-    console[logCommand](...args);
+    try {
+      Function.prototype.bind.call(console[logCommand], console).apply(console, args);
+    } catch (e) {
+      Function.prototype.bind.call(console.log, console).apply(console, args);
+    }
     /* eslint-enable no-console */
   };
 }
